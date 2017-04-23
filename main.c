@@ -2,7 +2,18 @@
 #include <stdio.h>
 #include <math.h>
 #include <time.h>
-//Wins or loses Struct
+/*Wins or loses Struct
+Use this to create a linked list of our games.
+	2 Lists? one for wins and one for loses?? (idea)
+	Win/ Lose
+	wager
+	card score value of player & dealer?	
+*/
+
+/*
+Make a search tree for wins and loses. Organized by wagers.
+*/
+
 struct node{
 	
 };

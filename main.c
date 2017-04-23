@@ -5,6 +5,7 @@
 /*Wins or loses Struct
 Use this to create a linked list of our games.
 	2 Lists? one for wins and one for loses?? (idea)
+	Name
 	Win/ Lose
 	wager
 	card score value of player & dealer?	

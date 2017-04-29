@@ -2,21 +2,16 @@
 #include <stdio.h>
 #include <math.h>
 #include <time.h>
-/*Wins or loses Struct
-Use this to create a linked list of our games.
-	2 Lists? one for wins and one for loses?? (idea)
-	Name
-	Win/ Lose
-	wager
-	card score value of player & dealer?
-*/
 
-/*
-Make a search tree for wins and loses. Organized by wagers.
-*/
+char heart = 'H';
+char diamond = 'D';
+char club = 'C';
+char spade = 'S';
+int cash = 500;
 
 struct node{
     char *result;
+    int wager, score, dscore, bank;
     struct node *next;
 };
 struct node *head = NULL;
@@ -24,18 +19,84 @@ struct node *current = NULL;
 int wins = 0;
 int losses = 0;
 
+struct bTreeNode{
+	int wager;
+	struct bTreeNode* left;
+	struct bTreeNode* right;
+};
 
 
-char heart = 'H';
-char diamond = 'D';
-char club = 'C';
-char spade = 'S';
+struct bTreeNode* sortedListToBST(struct node **head_reff, int n);
+struct bTreeNode* newNode(int wager);
 
-int cash = 500;
+//count number of nodes in linked list and return value to create BST
+struct bTreeNode* sortBST(struct node *head){
+	
+	int n = countNodes(head);
+	return sortedListToBST(&head, n);
+}
 
-void insertToList(char r){
+//construct BST and return root
+struct bTreeNode* sortedListToBST(struct node **head_reff, int n){
+	if (n<= 0){
+		return NULL;
+	}
+	//create left side of tree recursively
+	struct bTreeNode *left= sortedListToBST(head_reff, n/2);
+	
+	//allocate memory for root and connect left subtree.
+	struct bTreeNode *root = newNode((*head_reff)->wager);
+	root->left = left;
+	
+	//iterate throught list.
+	*head_reff = (*head_reff)->next
+	;
+	//create right side of tree recursively
+	root->right = sortedListToBST(head_reff, n-n/2-1);
+	
+	return root;
+}
+
+//iterate through list and count nodes
+int countNodes(struct node *head){
+	int count = 0;
+	struct node *temp = head;
+	
+	while(temp){
+		temp = temp->next;
+		count++;
+	}
+	return count;
+}
+
+//create new node for BST
+struct bTreeNode* newNode(int wager){
+	struct bTreeNode* btnode = (struct bTreeNode*)malloc(sizeof(struct bTreeNode));
+	btnode->wager = wager;
+	btnode->left = NULL;
+	btnode->right = NULL;
+	
+	return btnode;
+};
+
+//print a preorder traversal of BST
+void printBST(struct bTreeNode* btnode){
+	if(btnode == NULL){
+		//printf("\nThe tree is empty\n");
+		return;
+	}
+	printf("\nwager: %d\n", btnode->wager);
+	printBST(btnode->left);
+	printBST(btnode->right);
+}
+
+void insertToList(char r, int wager, int score, int dscore){
     struct node *link = (struct node*)malloc(sizeof(struct node));
     link->result = r;
+    link->wager = wager;
+    link->bank = cash;
+    link->score = score;
+    link->dscore = dscore;
     link->next = head;
     head=link;
 };
@@ -43,7 +104,7 @@ void insertToList(char r){
 void printList(){
     struct node *ptr = head;
     while(ptr != NULL){
-        printf("%c->",ptr->result);
+        printf("outcome: %c\tWager: %d\t Bank Balance: %d\tPlayer Score: %d\tDealer Score: %d\n",ptr->result, ptr->wager, ptr->bank, ptr->score, ptr->dscore);
         ptr=ptr->next;
     }
 
@@ -70,8 +131,8 @@ int dealer(int dealerScore){
 			randCard = 11;
 		}
 	}
-	//display the value of the card that the dealer drew and update his score.
-	printf("\n\nDealers card Value: %d\n", randCard);
+
+
 	dealerScore = dealerScore + randCard;
 	return dealerScore;
 };
@@ -87,15 +148,15 @@ int gameStart(){
 
 	printf("\n\nBank: %d\n\n", cash);
 	score = generateSuit();
-	printf("%d", score);
-
 	opponentScore = dealer(opponentScore);
+	printf("Player Card Value: %d\tDealers Card Value: %d\n", score, opponentScore);
 	wager = bet(cash);
 
 	//loop until either player chooses to exit or player loses
 	while(score<=21){
 		if(score<21){
-
+			
+			printf("\n\nDealers Score: %d\n\n", opponentScore);
 			printf("\n\nChoose an option: \n1. Hit\n2.Stay\n");
 			scanf("%d", &choice);
 
@@ -103,7 +164,7 @@ int gameStart(){
 			if(choice == 1){
 				temp = generateSuit();
 				score = score + temp;
-				printf("\n\nScore: %d\n", score);
+				printf("\n\nPlayer Score: %d\t Dealer Score: %d\n", score, opponentScore);
 			}
 
 
@@ -114,15 +175,15 @@ int gameStart(){
 					opponentScore = dealer(opponentScore);
 
 					//display dealers card values for the user to view
-					printf("Dealers Score: %d", opponentScore);
+					printf("Dealers Score: %d\n", opponentScore);
 				}
 				//Condiiton "Dealer wins with a better score"
-				if(opponentScore > score && opponentScore<21){
+				if(opponentScore > score && opponentScore<=21){
 					printf("The dealer beat you!");
 					cash = cash - wager;
 
 					losses++;
-					insertToList('L');
+					insertToList('L', wager, score, opponentScore);
 				}
 
 				//Condition "Dealer Bust", dealer goes over 21 and player wins
@@ -131,7 +192,7 @@ int gameStart(){
 					cash = cash + wager;
 
 					wins++;
-					insertToList('W');
+					insertToList('W', wager, score, opponentScore);
 				}
 				break;
 			}
@@ -142,7 +203,7 @@ int gameStart(){
 			cash = cash + wager;
 
 			wins++;
-			insertToList('W');
+			insertToList('W', wager, score, opponentScore);
 			break;
 		}
 
@@ -152,7 +213,7 @@ int gameStart(){
 		cash = cash - wager;
 
 		losses++;
-		insertToList('L');
+		insertToList('L', wager, score, opponentScore);
 	}
 
 };
@@ -164,7 +225,7 @@ int bet(int cash){
 	printf("\n\nPlease enter bet: ");
 	scanf("%d", &wager);
 
-	if(wager>credits){
+	while(wager>credits){
 		printf("You do not have enough funds to proceed with that bet.\n Please enter bet: ");
 		scanf("%d", &wager);
 	}
@@ -420,16 +481,16 @@ int clubCard(){
 int main(void){
 	int choice;
 
-	printf("Welcome to Black Jack!\n Choose an option below:\n 1. New Game\n 2. Rules of Black Jack\n 3. Show W/L\n 4. Exit\n");
+	printf("Welcome to Black Jack!\n Choose an option below:\n 1. New Game\n 2. Rules of Black Jack\n 3. Show W/L\n 4. Create Binary Tree\n 5. Exit\n");
 	scanf("%d", &choice);
 
-	 if((choice<1) || (choice>3)) // If invalid choice entered
+	 if((choice<1) || (choice>5)) // If invalid choice entered
             {
-                printf("\nIncorrect Choice. Please enter 1, 2 or 3\n");
+                printf("\nIncorrect Choice. Please enter 1, 2, 3, 4 or 5\n");
                 scanf("%d", &choice);
             }
 
-	while(choice!=4){
+	while(choice!=5){
 
 		switch(choice) {
 			case 1:
@@ -445,12 +506,17 @@ int main(void){
 			    printf("Printing Win/Loss History: \n");
                 printList();
 				break;
-            case 4:
+			case 4:
+				printf("PreOrder Traversal Binary Tree: \n");
+				struct node *ptr = head;
+				struct bTreeNode *root = sortBST(head);
+				printBST(root);
+            case 5:
 				break;
 			default:
                    printf("\nInvalid Input");
 		}
-		printf("\n\nChoose an option below:\n 1. New Game\n 2. Rules of Black Jack\n 3. Show W/L\n 4. Exit\n");
+		printf("\n\nChoose an option below:\n 1. New Game\n 2. Rules of Black Jack\n 3. Show W/L\n 4. Create Binary Tree\n 5. Exit\n");
 		scanf("%d", &choice);
 	}
 }

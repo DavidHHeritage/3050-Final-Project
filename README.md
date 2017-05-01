@@ -39,6 +39,22 @@ Bet
 
 Generate_Suit
 
+    num equals 0
+    num = random number from 1-4
+    
+    if num equals 1
+        suit is hearts
+        call display_card
+    if num equals 2
+        suit is diamonds
+        call display_card
+    if num equals 3
+        suit is spades
+        call display_card
+    if num equals 4
+        suit is clubs
+        call display_card
+
 Display_Card()
 
     num equals 0

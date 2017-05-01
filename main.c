@@ -107,6 +107,7 @@ void printList(){
         printf("outcome: %c\tWager: %d\t Bank Balance: %d\tPlayer Score: %d\tDealer Score: %d\n",ptr->result, ptr->wager, ptr->bank, ptr->score, ptr->dscore);
         ptr=ptr->next;
     }
+	printf("Total wins: %d Total losses: %d\n", wins,losses);
 
 };
 

@@ -35,9 +35,20 @@ Dealer
 
 Game_Start
 
-Bet
+Bet(int c)
 
-Generate_Suit
+    create variable wager
+    
+    ask user for their wager
+        wager = user input
+        
+    while wager is greater than c
+        print error that user input is invalid, and ask them to submit again
+        wager = user input
+        
+    return wager
+
+Generate_Suit()
 
     num equals 0
     num = random number from 1-4

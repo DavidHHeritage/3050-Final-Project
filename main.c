@@ -109,7 +109,7 @@ void printList(){
         ptr=ptr->next;
     }
 	games = wins + losses;
-	printf("Total Wins: %d --- Total Losses: %d --- Total Games: %d\n T", wins,losses, games);
+	printf("Total Wins: %d --- Total Losses: %d --- Total Games: %d\n", wins,losses, games);
 
 };
 

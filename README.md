@@ -15,4 +15,28 @@ For option 1, once a game starts the user is requested to submit a wager. The us
 ## How to Run
 To run the program, all one must do is launch the file. Nothing else is required besides the user input as explained in the earlier section. 
 
-## PseudoCode for Core Components
+## Pseudo Code for Core Components
+
+Construct_BST
+
+Sort_BST
+
+Count_Nodes
+
+NewBST_Node
+
+Print_BST
+
+Insert_to_List
+
+Print_List
+
+Dealer
+
+Game_Start
+
+Bet
+
+Generate_Suit
+
+Display_Card

@@ -39,4 +39,24 @@ Bet
 
 Generate_Suit
 
-Display_Card
+### Display_Card()
+    num equals 0
+    num = random number from 1-13
+    
+    if num less than or equal to 9
+      card has a value of num in the chosen suit
+      print visual of card
+    if num equals 10
+      card is a jack in the chosen suit
+      print visual of card
+    if num equals 11
+      card is a queen in the chosen suit
+      print visual of card
+    if num equals 12
+      card is a king in the chosen suit
+      print visual of card
+    if num equals 13
+      card is an ace in the chosen suit
+      print visual of card
+      
+    return num

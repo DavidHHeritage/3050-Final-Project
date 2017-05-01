@@ -40,6 +40,7 @@ Bet
 Generate_Suit
 
 Display_Card()
+
     num equals 0
     num = random number from 1-13
     

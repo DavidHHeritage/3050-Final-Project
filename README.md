@@ -33,7 +33,54 @@ Print_List
 
 Dealer
 
-Game_Start
+Game_Start()
+
+    score, temp, wager, opponentScore equal 0
+    create variable choice
+    
+    display cash available in the bank
+    score = generate_Suit()
+    opponentScore = dealer(opponentScore)
+    display the card values for the player and for the dealer
+    wager = bet(cash)
+    
+    while score is less than or equal to 21
+        if score is less than 21
+            display options to hit or stay
+            if selected hit
+                temp = generate_suit()
+                score equals score plus temp
+                displau scores for player and dealer
+             else if selected stay
+                while dealer has less than 17 or less than the player
+                    opponentScore = dealer(opponentScore)
+                    display dealer and player scores
+                    add 1 to draws
+                    insertToList('D', wager, score, opponentScore)
+                if dealer has a better score than the player
+                    display that the dealer won
+                    subtract wager from the player's remaining amount of cash
+                    add 1 to losses
+                    insertToList('L', wager, score, opponentScore)
+                if dealer's score is over 21
+                    display that the player was won
+                    add wager to the player's remaining amount of money
+                    add 1 to wins
+                    insertToList('W', wager, score, opponentScore)
+                break
+                
+         else if score equals 21
+            display that the player scored a blackgack and they have won
+            add wager to the player's remaining amount of money
+            add 1 to wins
+            insertToList('W', wager, score, opponentScore)
+            break
+         
+         if score is greater than 21
+            display that the user has lost
+            subtract wager from the player's remaining amount of cash
+            add 1 to losses
+            insertToList('L', wager, score, opponentScore)
 
 Bet(int c)
 

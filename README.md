@@ -17,11 +17,36 @@ To run the program, all one must do is launch the file. Nothing else is required
 
 ## Pseudo Code for Core Components
 
-Construct_BST
+Construct_BST(node * head)
 
-Sort_BST
+    call Count_Nodes on *head
+    return the result of List_to_BST(&head, result of Count_Nodes on *head)
 
-Count_Nodes
+List_to_BST(node * * head_reference, int n)
+
+    if n is greater than or equal to 0
+        return NULL
+        
+     bTreeNode * left = List_to_BST(head_reference, n/2)
+     bTreeNode * root = newNode((* head_reference)->wager)
+     assign left to root->left
+     
+     assign (*head_reference)->next to *head_reference
+     
+     root->right = List_to_BST(head_reference, n-n/2-1)
+     
+     return root
+
+Count_Nodes(node * head)
+
+    count = 0
+    code * temp = head
+    
+    while temp is true
+        assign temp to temp->next
+        add 1 to count
+        
+    return count
 
 NewBST_Node(int wager)
 

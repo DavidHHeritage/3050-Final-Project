@@ -23,9 +23,22 @@ Sort_BST
 
 Count_Nodes
 
-NewBST_Node
+NewBST_Node(int wager)
 
-Print_BST
+    allocate memory for bTreeNode * btnode
+    assign wager to btnode->wager
+    assign NULL to btnode's left and right nodes
+    
+    return btnode
+
+Print_BST(struct bTreeNode * btnode)
+
+    if btnode is NULL
+        return
+        
+     display wager of the node
+     print_BST(left child of btnode)
+     print_BST(right child of btnode)
 
 Insert_to_List(char r, int wager, int score, int dscore)
     

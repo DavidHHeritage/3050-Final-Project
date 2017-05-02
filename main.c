@@ -122,7 +122,7 @@ int dealer(int dealerScore){
 	}
 
 	//if card is Jack, Queen, King or Ace it will be set to 10
-	if(randCard > 10){
+	if(randCard > 10 && randCard < 13){
 		randCard = 10;
 	}
 	//Ace value condition check.
@@ -247,25 +247,25 @@ int generateSuit(){
 	//Call function that creates the card corresponding to the correct suit.
 	if(randCard==1)
      {
-         heartCard();
+         return heartCard();
          //l=k;
      }
 
      if(randCard==2)
      {
-         diamondCard();
+        return diamondCard();
          //l=k;
      }
 
      if(randCard==3)
      {
-         spadeCard();
+        return spadeCard();
          //l=k;
      }
 
      if(randCard==4)
      {
-         clubCard();
+        return clubCard();
          //l=k;
      }
      //return l;
@@ -503,7 +503,37 @@ int main(void){
 			case 2:
 				printf("The Rules of Black jack are listed below\n\n\n\n");
 				printf("RULES:\nBlackjack may be played with one to eight decks of 52-card decks.");
-				//printf("Aces may be counted as 1 or 11 points, 2 to 9 according to pip value, and tens and face cards count as ten points.\nThe value of a hand is the sum of the point values of the individual cards. Except, a blackjack is the highest hand, consisting of an ace and any 10-point card, and it outranks all other 21-point hands.\nAfter the players have bet, the dealer will give two cards to each player and two cards to himself. One of the dealer cards is dealt face up. The facedown card is called the hole card.\nIf the dealer has an ace showing, he will offer a side bet called "insurance." This side wager pays 2 to 1 if the dealer's hole card is any 10-point card. Insurance wagers are optional and may not exceed half the original wager.\nIf the dealer has a ten or an ace showing (after offering insurance with an ace showing), then he will peek at his facedown card to see if he has a blackjack. If he does, then he will turn it over immediately.\nIf the dealer does have a blackjack, then all wagers (except insurance) will lose, unless the player also has a blackjack, which will result in a push. The dealer will resolve insurance wagers at this time.\nPlay begins with the player to the dealer's left. The following are the choices available to the player: \nStand: Player stands pat with his cards.\nHit: Player draws another card (and more if he wishes). If this card causes the player's total points to exceed 21 (known as "breaking" or "busting") then he loses.\nDouble: Player doubles his bet and gets one, and only one, more card.\nSplit: If the player has a pair, or any two 10-point cards, then he may double his bet and separate his cards into two individual hands. The dealer will automatically give each card a second card. Then, the player may hit, stand, or double normally. However, when splitting aces, each ace gets only one card. Sometimes doubling after splitting is not allowed. If the player gets a ten and ace after splitting, then it counts as 21 points, not a blackjack. Usually the player may keep re-splitting up to a total of four hands. Sometimes re-splitting aces is not allowed.\nSurrender: The player forfeits half his wager, keeping the other half, and does not play out his hand. This option is only available on the initial two cards, and depending on casino rules, sometimes it is not allowed at all.\nAfter each player has had his turn, the dealer will turn over his hole card. If the dealer has 16 or less, then he will draw another card. A special situation is when the dealer has an ace and any number of cards totaling six points (known as a "soft 17"). At some tables, the dealer will also hit a soft 17.\nIf the dealer goes over 21 points, then any player who didn't already bust will win.\nIf the dealer does not bust, then the higher point total between the player and dealer will win.\nWinning wagers pay even money, except a winning player blackjack usually pays 3 to 2. Some casinos have been short-paying blackjacks, which is a rule strongly in the casino's favor.\n");
+				printf("Aces may be counted as 1 or 11 points, 2 to 9 according to pip value,\n");
+                                printf("and tens and face cards count as ten points. The value of a hand is the sum\n");
+                                printf("of the point values of the individual cards. Except, a blackjack is the highest hand,\n");
+                                printf("consisting of an ace and any 10-point card, and it outranks all other 21-point hands.\n");
+                                printf("After the players have bet, the dealer will give two cards to each player and two cards\n");
+                                printf("to himself. One of the dealer cards is dealt face up. The facedown card is called the hole card.\n");
+                                printf("If the dealer has an ace showing, he will offer a side bet called insurance.\n");
+                                printf("This side wager pays 2 to 1 if the dealer's hole card is any 10-point card.\n");
+                                printf("Insurance wagers are optional and may not exceed half the original wager.\n");
+                                printf("If the dealer has a ten or an ace showing (after offering insurance with an ace showing),\n");
+                                printf("then he will peek at his facedown card to see if he has a blackjack. If he does, then he will turn\n");
+                                printf("it over immediately.\nIf the dealer does have a blackjack, then all wagers (except insurance) will lose,\n");
+                                printf("unless the player also has a blackjack, which will result in a push. The dealer will resolve insurance\n");
+                                printf("wagers at this time.\nPlay begins with the player to the dealer's left. The following are the choices available\n");
+                                printf("to the player: \nStand: Player stands pat with his cards. Hit: Player draws another card\n");
+                                printf("(and more if he wishes). If this card causes the player's total points to exceed 21 (known as 'breaking' or 'busting')\n");
+                                printf("then he loses. Double: Player doubles his bet and gets one, and only one, more card.\n");
+                                printf("Split: If the player has a pair, or any two 10-point cards, then he may double his bet and separate\n");
+                                printf("his cards into two individual hands. The dealer will automatically give each card a second card.\n");
+                                printf("Then, the player may hit, stand, or double normally. However, when splitting aces, each ace gets only one card.\n");
+                                printf("Sometimes doubling after splitting is not allowed. If the player gets a ten and ace after splitting,\n");
+                                printf("then it counts as 21 points, not a blackjack. Usually the player may keep re-splitting up to a total of four hands.\n");
+                                printf("Sometimes re-splitting aces is not allowed.\nSurrender: The player forfeits half his wager, keeping the other half,\n");
+                                printf("and does not play out his hand. This option is only available on the initial two cards, and depending on casino rules,\n");
+                                printf("sometimes it is not allowed at all.\nAfter each player has had his turn, the dealer will turn over his hole card.\n");
+                                printf("If the dealer has 16 or less, then he will draw another card. A special situation is when the dealer has an ace and\n");
+                                printf("any number of cards totaling six points (known as a 'soft 17'). At some tables, the dealer will also hit a soft 17.\n");
+                                printf("If the dealer goes over 21 points, then any player who didn't already bust will win.If the dealer does not bust,\n");
+                                printf("then the higher point total between the player and dealer will win.\nWinning wagers pay even money,\n");
+                                printf("except a winning player blackjack usually pays 3 to 2. Some casinos have been short-paying blackjacks,\n");
+                                printf("which is a rule strongly in the casino's favor.\n");
 				break;
 			case 3:
 			    printf("Printing Win/Loss History: \n");

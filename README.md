@@ -13,15 +13,19 @@ For option 1, once a game starts the user is requested to submit a wager. The us
 Sample Inputs are included in folder
 
 Selecting to play a new game
+
 ![New Game Image](https://github.com/M3gster/CS3050-Final-Project/blob/master/Play%20New%20Game.PNG)
 
 Selecting the hit option
+
 ![Hit Option Image](https://github.com/M3gster/CS3050-Final-Project/blob/master/Hit%20Option.PNG)
 
 Selecting the stay option
+
 ![Stay Option Image](https://github.com/M3gster/CS3050-Final-Project/blob/master/Stay%20Option.PNG)
 
 Selecting another option rather than to play a new game
+
 ![Other Option Image](https://github.com/M3gster/CS3050-Final-Project/blob/master/Other%20Option.PNG)
 
 ## How to Run

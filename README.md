@@ -31,7 +31,24 @@ Insert_to_List
 
 Print_List
 
-Dealer
+Dealer(unt dealerScore)
+    
+    card = 0
+    
+    if dealerScore is less than 17
+        card = random number from 1 to 13
+        
+    if card is greater than 10
+        card = 10
+        
+    else if card equals 13
+        if dealerScore is greater than 11
+            card = 1
+        else
+            card = 11
+            
+      dealerScore = delearScore + card
+      return dealerScore
 
 Game_Start()
 

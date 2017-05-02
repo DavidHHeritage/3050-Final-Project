@@ -27,7 +27,17 @@ NewBST_Node
 
 Print_BST
 
-Insert_to_List
+Insert_to_List(char r, int wager, int score, int dscore)
+    
+    allocate memory for node *link
+    assign r to link->result 
+    assign wager to link->wager
+    assign bank to link->cash
+    assign score to link->score 
+    assign dscore to link->dscore
+    assign head to link->next
+    
+    make head of the list, link
 
 Print_List()
 

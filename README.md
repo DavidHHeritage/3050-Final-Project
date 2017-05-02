@@ -31,7 +31,7 @@ Insert_to_List
 
 Print_List
 
-Dealer(unt dealerScore)
+Dealer(int dealerScore)
     
     card = 0
     

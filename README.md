@@ -10,7 +10,7 @@ The user inputted needed to play our Blackjack game has been kept simple to avoi
 
 For option 1, once a game starts the user is requested to submit a wager. The user is to type a number (within the amount available in the bank) and press enter to decide their wage. Again, if an invalid option is submitted, an error message will be shown and the user will be allowed to select a wager again. After the wager has been submitted, the user is presented with another two options, 1) Hit or 2) Stay. Invalid input is treated the same as previous examples. Option 2 will end the game and take you back to the main screen, while always telling you the results of the game. Option 1 will do the same if you lose in that round. If you do not, then the two options will be displayed again. This continues until either the user wins or loses the game.
 
-//add images for sample input
+Sample Inputs are included in folder
 
 ## How to Run
 To run the program, all one must do is launch the file. Nothing else is required besides the user input as explained in the earlier section. 

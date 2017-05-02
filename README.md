@@ -29,7 +29,15 @@ Print_BST
 
 Insert_to_List
 
-Print_List
+Print_List()
+
+    node *pointer = head
+    while pointer isn't NULL
+        display the user's outcome, wager, bank balance, their score, and dealer's score of the game
+        assign pointer to the next node
+        
+     games = total number of wins and losses and draws
+     display the total number of wins, losses, draws, and total games
 
 Dealer(int dealerScore)
     

@@ -31,6 +31,9 @@ Selecting another option rather than to play a new game
 ## How to Run
 To run the program, all one must do is launch the file. Nothing else is required besides the user input as explained in the earlier section. 
 
+## Testbed
+Due to the way that the program is implemented no input testbed is required. The project is all input driven, as a result no sample input is possible. The user must simply input their choices from the options given as the game is played out. 
+
 ## Pseudo Code for Core Components
 
 Construct_BST(node * head)

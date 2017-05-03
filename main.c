@@ -148,6 +148,7 @@ int gameStart(){
 	int choice;
 	int wager = 0;
 	int opponentScore = 0;
+	char input[2];
 
 	printf("\n\nBank: %d\n\n", cash);
 	score = generateSuit();
@@ -161,7 +162,17 @@ int gameStart(){
 			
 			printf("\n\nDealers Score: %d\n\n", opponentScore);
 			printf("\n\nChoose an option: \n1. Hit\n2.Stay\n");
-			scanf("%d", &choice);
+			//printf("check\n");
+			scanf(" %c", &input);
+			//printf("yes\n");
+			choice = atoi(input);
+
+			while(choice < 1 || choice > 2){
+				printf("INVALID INPUT. Please enter a listed input.\n");
+				printf("\n\nChoose an option: \n1. Hit\n2.Stay\n\n");
+				scanf(" %c", &input);
+				choice = atoi(input);
+			}
 
 			//condition "hit", draws another card for player
 			if(choice == 1){
@@ -174,14 +185,14 @@ int gameStart(){
 			//condition "stay", ends players drawing phase and the dealer tries to get a better hand then the player.
 			else if (choice == 2){
 				//while the dealer has less than 17 or less than the player it will draw.
-				while(opponentScore < 17 || opponentScore <= score){
+				while(opponentScore <= 17 && opponentScore <= score){
 					opponentScore = dealer(opponentScore);
 
 					//display dealers card values for the user to view
 					printf("Dealers Score: %d\n", opponentScore);
 				}
 				//Condiiton "Dealer wins with a better score"
-				if(opponentScore > score && opponentScore<=21){
+				if(opponentScore > score && opponentScore <= 21){
 					printf("The dealer beat you!");
 					cash = cash - wager;
 
@@ -248,27 +259,22 @@ int generateSuit(){
 	if(randCard==1)
      {
          return heartCard();
-         //l=k;
      }
 
      if(randCard==2)
      {
         return diamondCard();
-         //l=k;
      }
 
      if(randCard==3)
      {
         return spadeCard();
-         //l=k;
      }
 
      if(randCard==4)
      {
         return clubCard();
-         //l=k;
      }
-     //return l;
 };
 
 //Create a heart card
@@ -483,15 +489,18 @@ int clubCard(){
 
 int main(void){
 	int choice;
+	char input[20];
 
 	printf("Welcome to Black Jack!\n Choose an option below:\n 1. New Game\n 2. Rules of Black Jack\n 3. Show W/L\n 4. Create Binary Tree\n 5. Exit\n");
-	scanf("%d", &choice);
+	scanf(" %c", &input);
+	choice = atoi(input);
 
-	 if((choice<1) || (choice>5)) // If invalid choice entered
-            {
-                printf("\nIncorrect Choice. Please enter 1, 2, 3, 4 or 5\n");
-                scanf("%d", &choice);
-            }
+	while (choice < 1 || choice > 5){
+			printf("INVALID INPUT. Please enter a listed input.\n");		
+			printf("\n\nChoose an option below:\n 1. New Game\n 2. Rules of Black Jack\n 3. Show W/L\n 4. Create Binary Tree\n 5. Exit\n");
+			scanf(" %c", &input);
+			choice = atoi(input);
+		}
 
 	while(choice!=5){
 
@@ -550,6 +559,15 @@ int main(void){
                    printf("\nInvalid Input");
 		}
 		printf("\n\nChoose an option below:\n 1. New Game\n 2. Rules of Black Jack\n 3. Show W/L\n 4. Create Binary Tree\n 5. Exit\n");
-		scanf("%d", &choice);
+		scanf(" %c", &input);
+		choice = atoi(input);
+		while (choice < 1 || choice > 5){
+		
+			printf("INVALID INPUT. Please enter a listed input.\n");		
+			printf("\n\nChoose an option below:\n 1. New Game\n 2. Rules of Black Jack\n 3. Show W/L\n 4. Create Binary Tree\n 5. Exit\n");
+			scanf(" %c", &input);
+			choice = atoi(input);
+		}
+
 	}
 }

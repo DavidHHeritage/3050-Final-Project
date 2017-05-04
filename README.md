@@ -40,9 +40,11 @@ Invalid Menu Screen Input
 ![Wrong  Menu Input Image](https://github.com/M3gster/CS3050-Final-Project/blob/master/Wrong%20Menu%20Input.png)
 
 Invalid Bet Input 
+
 ![Wrong Bet Input Image](https://github.com/M3gster/CS3050-Final-Project/blob/master/Wrong%20Bet%20Input.png)
 
 Invalid Hit or Stay Input
+
 ![Wrong Hit or Stay Input Image](https://github.com/M3gster/CS3050-Final-Project/blob/master/Wrong%20Hit%20or%20Stay%20Input.png)
 
 ## Pseudo Code for Core Components

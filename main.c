@@ -16,6 +16,7 @@ struct node{
 };
 struct node *head = NULL;
 struct node *current = NULL;
+
 int wins = 0;
 int losses = 0;
 int games = 0;
@@ -91,6 +92,9 @@ void printBST(struct bTreeNode* btnode){
 	printBST(btnode->right);
 }
 
+//inserts values into a linked list
+//saves values for result of game, wager made during the game, money player has,
+//the player's score, and the dealer's score
 void insertToList(char r, int wager, int score, int dscore){
     struct node *link = (struct node*)malloc(sizeof(struct node));
     link->result = r;
@@ -102,6 +106,8 @@ void insertToList(char r, int wager, int score, int dscore){
     head=link;
 };
 
+//prints elements of the linked list
+//under that, prints total number of games played 
 void printList(){
     struct node *ptr = head;
     while(ptr != NULL){
@@ -232,16 +238,19 @@ int gameStart(){
 
 };
 
+//gets wager from the player
 int bet(int cash){
 	int wager;
 	int credits = cash;
+        //char input[1];
 
 	printf("\n\nPlease enter bet: ");
 	scanf("%d", &wager);
 
-	while(wager>credits){
-		printf("You do not have enough funds to proceed with that bet.\n Please enter bet: ");
-		scanf("%d", &wager);
+        
+        while(wager>credits || wager <= 0){
+		printf("You cannot wager zero, a negative amount more than you have in the bank.\n Please enter bet: ");
+		scanf("%d", &wager);    
 	}
 
 	return wager;
@@ -337,7 +346,7 @@ int diamondCard(){
 	randCard = rand()%13+1;
 
 	if(randCard<=9){
-    //Diamaon Card
+    //Diamond Card
 	    printf("-------\n");
 	    printf("|%c    |\n", diamond);
 	    printf("|  %d  |\n", randCard);
@@ -379,7 +388,6 @@ int diamondCard(){
 
 	return randCard;
 };
-
 
 int spadeCard(){
 	int randCard = 0;
@@ -388,7 +396,7 @@ int spadeCard(){
 	randCard = rand()%13+1;
 
 	if(randCard<=9){
-    //Heart Card
+    //Spade Card
 	    printf("-------\n");
 	    printf("|%c    |\n", spade);
 	    printf("|  %d  |\n", randCard);
@@ -430,7 +438,6 @@ int spadeCard(){
 
 	return randCard;
 };
-
 
 int clubCard(){
 	int randCard = 0;
@@ -439,7 +446,7 @@ int clubCard(){
 	randCard = rand()%13+1;
 
 	if(randCard<=9){
-    //Heart Card
+    //Club Card
 	    printf("-------\n");
 	    printf("|%c    |\n", club);
 	    printf("|  %d  |\n", randCard);
@@ -481,11 +488,6 @@ int clubCard(){
 
 	return randCard;
 };
-
-
-
-
-
 
 int main(void){
 	int choice;

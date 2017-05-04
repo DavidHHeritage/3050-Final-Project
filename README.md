@@ -33,6 +33,11 @@ To run the program, all one must do is launch the file. Nothing else is required
 
 ## Testbed
 Due to the way that the program is implemented no input testbed is required. The project is all input driven, as a result no sample input is possible. The user must simply input their choices from the options given as the game is played out. 
+However, some input is invalid and the program handles it as shown in the images below.
+
+![Wrong  Menu Input Image](https://github.com/M3gster/CS3050-Final-Project/blob/master/Wrong%20Menu%20Input.png)
+![Wrong Bet Input Image](https://github.com/M3gster/CS3050-Final-Project/blob/master/Wrong%20Bet%20Input.png)
+![Wrong Hit or Stay Input Image](https://github.com/M3gster/CS3050-Final-Project/blob/master/Wrong%20Hit%20or%20Stay%20Input.png)
 
 ## Pseudo Code for Core Components
 
